@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scp -i \"C:/Users/JoshuaDixon/.ssh/id_ed25519_antipolo\" \"c:/Users/JoshuaDixon/Downloads/hbcantipolo-site/php/media-handler.php\" rzixjmmy@129.121.81.231:/home/rzixjmmy/public_html/php/)"
+    ]
+  }
+}

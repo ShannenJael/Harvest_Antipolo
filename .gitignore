@@ -1,0 +1,32 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Uploaded media files (too large for git)
+data/media-library/
+
+# Node modules (if any)
+node_modules/
+
+# Logs
+*.log
+
+# Zip archives (too large)
+*.zip
+
+# Environment files with secrets
+.env
+.env.local
+
+# Local deploy targets and SSH key paths
+deploy/targets.local.ps1
