@@ -4265,49 +4265,53 @@ section {
    ==================================== */
 .info-boxes-section {
     background-color: var(--dark-bg);
-    padding: var(--spacing-xl) 0;
+    padding: 2.5rem 0;
 }
 
 .info-boxes-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
-    max-width: 900px;
+    gap: 0.9rem;
+    max-width: 980px;
     margin: 0 auto;
 }
 
 .info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
+    padding: 1.9rem 1.8rem;
+    min-height: 330px;
     text-align: center;
 }
 
 .info-box-teal {
-    background-color: var(--primary-color);
+    background-color: #1F1F1F;
     color: var(--white);
 }
 
 .info-box h3 {
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-sm);
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.65rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .info-box-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--spacing-lg) 0;
-    text-align: left;
+    margin: 0 0 1rem 0;
+    text-align: center;
 }
 
 .info-box-list li {
     color: var(--white);
     font-size: 1.05rem;
-    padding: var(--spacing-xs) 0;
+    padding: 0.58rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -4320,15 +4324,20 @@ section {
 .info-box-email {
     color: var(--white);
     font-size: 1.05rem;
-    margin-bottom: var(--spacing-sm);
-    text-align: left;
+    margin-bottom: 0.65rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.55rem;
+    line-height: 1.45;
 }
 
 .info-box-address i,
 .info-box-phone i,
 .info-box-email i {
     width: 20px;
-    margin-right: var(--spacing-xs);
+    margin-top: 0.15rem;
     opacity: 0.9;
 }
 
@@ -4347,14 +4356,16 @@ section {
 .btn-info-box {
     display: inline-block;
     background-color: var(--white);
-    color: var(--primary-color);
-    padding: var(--spacing-sm) var(--spacing-lg);
+    color: #1F1F1F;
+    padding: 0.8rem 2rem;
     border-radius: var(--radius-md);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: var(--transition-medium);
-    margin-top: var(--spacing-md);
+    margin-top: auto;
+    align-self: center;
+    min-width: 160px;
 }
 
 .btn-info-box:hover {
@@ -4371,7 +4382,12 @@ section {
     }
 
     .info-box {
+        min-height: auto;
         padding: var(--spacing-lg);
+    }
+
+    .info-box h3 {
+        font-size: 1.55rem;
     }
 }
 
