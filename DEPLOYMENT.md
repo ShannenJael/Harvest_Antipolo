@@ -39,6 +39,31 @@ Or:
 powershell -ExecutionPolicy Bypass -File deploy/deploy.ps1 -Target sanjuan
 ```
 
+## 4) Safest option for small edits
+
+For text changes or one-page fixes, do not edit files in place on the live server.
+
+Upload only the file you changed:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File deploy/upload-file.ps1 -Target antipolo -Paths pages/visitors-card.html
+```
+
+You can also upload multiple files safely:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File deploy/upload-file.ps1 -Target antipolo -Paths index.html,pages/about.html
+```
+
+This script:
+
+- backs up the current remote file first
+- refuses to upload empty local files
+- uploads only the selected files
+- verifies the uploaded files are non-empty on the server
+
+Use `deploy.ps1` only when you intend to publish the full site.
+
 ## Safety checks included
 
 - Fails if local `index.html` does not match target church text.

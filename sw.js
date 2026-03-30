@@ -1,15 +1,16 @@
 // Harvest Baptist Church Antipolo Service Worker
 // Change this version number when you deploy updates
-const CACHE_VERSION = 'v7';
+const CACHE_VERSION = 'v11';
 const CACHE_NAME = 'hbc-antipolo-' + CACHE_VERSION;
 
 const urlsToCache = [
     '/',
     '/index.html',
-    '/css/style.css',
+    '/css/style.css?v=20260327v2',
     '/js/main.js',
     '/js/calendar.js',
     '/js/pwa-install.js',
+    '/js/unified-qr-src.js?v=20260328',
     '/data/calendar-events.json',
     '/images/HBC_Logo_Color.png',
     '/pages/contact.html',

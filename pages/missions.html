@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="#14AFB1">
+    <meta name="theme-color" content="#D4AF37">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="HBC Antipolo">
@@ -48,7 +48,7 @@
         }
 
         .letter-header {
-            background: linear-gradient(135deg, #14AFB1 0%, #0d8a8c 100%);
+            background: linear-gradient(135deg, #D4AF37 0%, #b8932f 100%);
             color: white;
             padding: 30px;
             text-align: center;
@@ -76,7 +76,7 @@
             color: #666;
             margin-bottom: 20px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #14AFB1;
+            border-bottom: 2px solid #D4AF37;
             font-size: 0.95rem;
         }
 
@@ -94,7 +94,7 @@
         .letter-pdf a {
             display: inline-block;
             margin-bottom: 15px;
-            color: #14AFB1;
+            color: #D4AF37;
             font-weight: 600;
             text-decoration: none;
         }
@@ -168,7 +168,7 @@
         }
 
         .qr-download a {
-            color: #14AFB1;
+            color: #D4AF37;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
@@ -189,7 +189,7 @@
 
         .qr-section .qr-instructions i {
             margin-right: 8px;
-            color: #14AFB1;
+            color: #D4AF37;
         }
 
         /* Admin Link (subtle) */
@@ -206,7 +206,7 @@
         }
 
         .admin-link a:hover {
-            color: #14AFB1;
+            color: #D4AF37;
         }
     </style>
 </head>
@@ -264,7 +264,6 @@
                         <a href="ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu two-column ministries-menu-list">
                             <li><a href="ministries.html">All Ministries</a></li>
-                            <li><a href="youth.html">Elevate Teens</a></li>
                             <li><a href="missions.html">Missions</a></li>
                             <li><a href="visitation.html">Visitation</a></li>
                             <li><a href="online-preaching.html">Online Preaching</a></li>
@@ -458,7 +457,7 @@
         <h3><i class="fas fa-qrcode"></i> Scan to Read on Your Phone</h3>
         <div class="qr-container">
             <h4>Missionary Letter</h4>
-            <div id="qrcode"></div>
+            <div id="qrcode"><img src="https://hbcantipolo.com/images/HBC_Logo_Color.png?v=20260327" style="display: block; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);"></div>
             <div class="qr-download">
                 <a id="qrDownloadLink" href="#" download="missionary-letter-qr.png">
                     <i class="fas fa-download"></i> Download QR Code
@@ -499,12 +498,14 @@
                     </div>
                 </div>
 
-                <div class="footer-section">
+                <div class=""footer-section"">
                     <h4>Service Times</h4>
-                    <p>Sunday School: 9:15 AM</p>
-                    <p>Sunday Morning: 10:30 AM</p>
-                    <p>Sunday Evening: 6:00 PM</p>
-                    <p>Wednesday Evening: 7:00 PM</p>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p>
                 </div>
 
                 <div class="footer-section">
@@ -532,6 +533,7 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/unified-qr-src.js?v=20260328"></script>
     <script src="../js/pwa-install.js"></script>
 
     <!-- Load Missionary Letter and Generate QR Code -->
@@ -540,29 +542,52 @@
             function renderQrCode(targetUrl) {
                 var qrcodeContainer = document.getElementById('qrcode');
                 var downloadLink = document.getElementById('qrDownloadLink');
-                if (!qrcodeContainer || typeof QRCode === 'undefined') return;
-
+                if (!qrcodeContainer) return;
+                var qrText = targetUrl || (window.location.origin + '/pages/missions.html');
                 qrcodeContainer.innerHTML = '';
+
+                if (typeof QRCode === 'undefined') {
+                    var qrSrc = (window.UNIFIED_QR_SRC && window.UNIFIED_QR_SRC.trim()) || '../images/HBC_Logo_Color.png';
+                    var qrStyle = (window.UNIFIED_QR_STYLE && window.UNIFIED_QR_STYLE.trim()) || 'display: block; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);';
+                    qrcodeContainer.innerHTML = '<img src=\"' + qrSrc + '\" style=\"' + qrStyle + '\">';
+                    if (downloadLink) {
+                        downloadLink.href = qrSrc;
+                    }
+                    return;
+                }
+
                 new QRCode(qrcodeContainer, {
-                    text: targetUrl,
-                    width: 150,
-                    height: 150,
-                    colorDark: "#0a0a0a",
-                    colorLight: "#ffffff",
+                    text: qrText,
+                    width: 220,
+                    height: 220,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
                     correctLevel: QRCode.CorrectLevel.H
                 });
 
                 setTimeout(function() {
-                    var img = qrcodeContainer.querySelector('img');
-                    var canvas = qrcodeContainer.querySelector('canvas');
-                    if (img) {
-                        downloadLink.href = img.src;
-                    } else if (canvas) {
-                        downloadLink.href = canvas.toDataURL('image/png');
-                    } else {
-                        downloadLink.removeAttribute('href');
+                    var qrVisuals = qrcodeContainer.querySelectorAll('img, canvas');
+                    if (qrVisuals.length > 1) {
+                        for (var i = 1; i < qrVisuals.length; i++) {
+                            qrVisuals[i].remove();
+                        }
                     }
-                }, 50);
+                    var qrVisual = qrcodeContainer.querySelector('img, canvas');
+                    if (!qrVisual) return;
+                    qrVisual.style.display = 'block';
+                    qrVisual.style.border = '10px solid #ffffff';
+                    qrVisual.style.borderRadius = '12px';
+                    qrVisual.style.background = '#ffffff';
+                    qrVisual.style.boxShadow = '0 6px 18px rgba(0, 0, 0, 0.18)';
+
+                    if (downloadLink) {
+                        if (qrVisual.tagName === 'IMG') {
+                            downloadLink.href = qrVisual.src;
+                        } else if (qrVisual.toDataURL) {
+                            downloadLink.href = qrVisual.toDataURL('image/png');
+                        }
+                    }
+                }, 160);
             }
 
             // Load missionary letter from JSON file
@@ -610,7 +635,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('/sw.js?v=20260328qr')
                     .then(function(registration) {
                         console.log('ServiceWorker registered: ', registration.scope);
                     })

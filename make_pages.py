@@ -1,4 +1,4 @@
-import os
+﻿import os
 
 pages_dir = r'c:\Users\JoshuaDixon\Downloads\hbcantipolo-site\pages'
 
@@ -74,9 +74,17 @@ NAV = """    <div class="top-bar"><div class="container"><div class="top-bar-con
 
 FOOTER = """    <footer class="footer"><div class="container"><div class="footer-content">
         <div class="footer-section"><h3>Harvest Baptist Church Antipolo</h3><p>Antipolo, Philippines</p><p class="footer-tagline">A place you can call home.</p><div class="social-links"><a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></div></div>
-        <div class="footer-section"><h4>Service Times</h4><p>Sunday School: 8:00 AM - 8:45 AM</p><p>Sunday Worship: 9:00 AM - 11:00 AM</p><p>Friday Prayer: 5:30 PM - 6:30 PM</p></div>
+        <div class="footer-section"><h4>Service Times</h4>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p></div>
         <div class="footer-section"><h4>Quick Links</h4><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="beliefs.html">What We Believe</a></li><li><a href="ministries.html">Ministries</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
-        <div class="footer-section"><h4>Contact Us</h4><p><i class="fas fa-map-marker-alt"></i> Block 50 Lot 9, Phase 3-A, Brgy. San Isidro, Zontaville, Padilla, Antipolo, Philippines, 187</p><p><i class="fas fa-phone"></i> 09665744044</p><p><i class="fas fa-envelope"></i> Harvest.baptist@yahoo.com</p></div>
+        <div class="footer-section"><h4>Contact Us</h4><p><i class="fas fa-map-marker-alt"></i> Block 50 Lot 9, Phase 3-A, Brgy. San Isidro, Zontaville, Padilla, Antipolo, Philippines, 187</p>
+                    <p><i class="fas fa-phone"></i> 09665744044</p>
+                    <p><i class="fas fa-envelope"></i> Harvest.baptist@yahoo.com</p></div>
     </div><div class="footer-bottom"><p>&copy; 2026 Harvest Baptist Church Antipolo of Antipolo, Philippines. All rights reserved.</p></div></div></footer>
     <script src="../js/main.js"></script>
     <script src="../js/pwa-install.js"></script>
@@ -132,3 +140,5 @@ for filename, title, subtitle in pages:
     print(f'Created: {filename}')
 
 print('Done.')
+
+

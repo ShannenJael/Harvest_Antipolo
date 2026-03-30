@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260327v2">
 
     <style>
         .home-qr-section {
@@ -55,8 +55,14 @@
             height: 240px;
         }
 
+        #homeQr {
+            position: relative;
+            width: 240px;
+            height: 240px;
+        }
+
         #homeQr canvas,
-        #homeQr img {
+        .home-qr-image {
             width: 240px;
             height: 240px;
         }
@@ -69,8 +75,10 @@
             height: 96px;
             transform: translate(-50%, -50%);
             background: #ffffff;
-            border-radius: 6px;
-            padding: 6px;
+            border-radius: 12px;
+            padding: 10px;
+            border: 6px solid #ffffff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
             box-sizing: border-box;
             object-fit: contain;
             pointer-events: none;
@@ -143,7 +151,6 @@
                         <a href="pages/ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu two-column ministries-menu-list">
                             <li><a href="pages/ministries.html">All Ministries</a></li>
-                            <li><a href="pages/youth.html">Elevate Teens</a></li>
                             <li><a href="pages/missions.html">Missions</a></li>
                             <li><a href="pages/visitation.html">Visitation</a></li>
                             <li><a href="pages/online-preaching.html">Online Preaching</a></li>
@@ -199,7 +206,12 @@
     </nav>
 
     <!-- Hero Section (FBC Hammond Style - Grayscale with Circle Logo) -->
-    <section class="hero" style="background-image: url('images/harvest-cover-main.png');">
+    <section class="hero">
+        <div class="hero-video-wrapper" aria-hidden="true">
+            <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Anniv_optimized.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="container">
@@ -284,7 +296,7 @@
                     <p class="resurrection-date">Resurrection Sunday: April 5, 2026</p>
                     <h2>Celebrate: He is Risen!</h2>
                     <p class="resurrection-times">
-                        Come join us for our Sunrise Service at 7:00 AM and Sunday Morning Service at 10:30 AM.
+                        Join us for Sunday Worship Service at 9:00 AM - 11:00 AM.
                     </p>
 
                     <h3>The Proclamation of Victory</h3>
@@ -319,12 +331,9 @@
                     <h2>Find Us</h2>
                     <p class="directions-address"><i class="fas fa-map-marker-alt"></i> Block 50 Lot 9, Phase 3-A, Brgy. San Isidro, Zontaville, Padilla, Antipolo, Philippines, 187</p>
                     <p class="directions-phone"><i class="fas fa-phone"></i> <a href="tel:09665744044">09665744044</a></p>
-                    <a href="https://maps.google.com/?q=Block+50+Lot+9+Phase+3A+Brgy+San+Isidro+Zontaville+Padilla+Antipolo+Philippines" target="_blank" class="btn-directions">
+                    <a href="https://maps.google.com/?q=Block+50+Lot+9+Phase+3-A+Brgy.+San+Isidro+Zontaville+Padilla+Antipolo+Philippines+187" target="_blank" class="btn-directions">
                         <i class="fas fa-directions"></i> Get Directions
                     </a>
-                </div>
-                <div class="directions-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.5!2d121.1754!3d14.6042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAntipolo%2C+Rizal%2C+Philippines!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -349,7 +358,7 @@
                     </div>
                 </div>
 
-                <div class="footer-section">
+                <div class=""footer-section"">
                     <h4>Service Times</h4>
                     <p>Sunday School: 8:00 AM - 8:45 AM</p>
                     <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
@@ -374,7 +383,7 @@
                     <p><i class="fas fa-map-marker-alt"></i> Block 50 Lot 9, Phase 3-A, Brgy. San Isidro, Zontaville, Padilla, Antipolo, Philippines, 187</p>
                     <p><i class="fas fa-phone"></i> 09665744044</p>
                     <p><i class="fas fa-envelope"></i> Harvest.baptist@yahoo.com</p>
-                    <a href="https://maps.google.com/?q=Block+50+Lot+9+Phase+3A+Brgy+San+Isidro+Zontaville+Padilla+Antipolo+Philippines" target="_blank" class="btn btn-small btn-outline mt-2">Get Directions</a>
+                    <a href="https://maps.google.com/?q=Block+50+Lot+9+Phase+3-A+Brgy.+San+Isidro+Zontaville+Padilla+Antipolo+Philippines+187" target="_blank" class="btn btn-small btn-outline mt-2">Get Directions</a>
                 </div>
             </div>
             
@@ -392,7 +401,7 @@
             <p>Use your phone camera to view this page quickly.</p>
             <div class="home-qr-wrap">
                 <div class="home-qr-box" id="homeQrBox">
-                    <div id="homeQr" aria-label="Home Page QR Code"></div>
+                    <div id="homeQr" aria-label="Home Page QR Code"><img class="home-qr-image" src="images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code"><img class="home-qr-logo" src="images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo"></div>
                 </div>
             </div>
         </div>
@@ -400,6 +409,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/unified-qr-src.js?v=20260328"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="js/pwa-install.js"></script>
     <script>
@@ -409,61 +419,38 @@
 
         function renderHomeQr() {
             const qrContainer = document.getElementById('homeQr');
-            const qrBox = document.getElementById('homeQrBox');
-            if (!qrContainer || typeof QRCode === 'undefined') return;
+            if (!qrContainer) return;
+            const targetUrl = window.location.origin + '/index.html';
+            qrContainer.innerHTML = '<img class="home-qr-image" src="images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code"><img class="home-qr-logo" src="images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo">';
 
-            const pageUrl = 'https://hbcantipolo.com';
-            qrContainer.innerHTML = '';
+            if (typeof QRCode === 'undefined') {
+                return;
+            }
 
             new QRCode(qrContainer, {
-                text: pageUrl,
-                width: 240,
-                height: 240,
+                text: targetUrl,
+                width: 220,
+                height: 220,
                 colorDark: '#000000',
                 colorLight: '#ffffff',
                 correctLevel: QRCode.CorrectLevel.H
             });
 
-            if (qrBox) {
-                const existingLogo = qrBox.querySelector('.home-qr-logo');
-                if (existingLogo) existingLogo.remove();
-                const logoImg = document.createElement('img');
-                logoImg.className = 'home-qr-logo';
-                logoImg.alt = 'Harvest Baptist Church Antipolo Logo';
-                logoImg.src = '/images/HBC_Logo_Color.png';
-                qrBox.appendChild(logoImg);
-            }
-
-            const tryDraw = (attemptsLeft) => {
-                const canvas = qrContainer.querySelector('canvas');
-                if (!canvas) {
-                    if (attemptsLeft > 0) setTimeout(() => tryDraw(attemptsLeft - 1), 60);
-                    return;
+            setTimeout(function() {
+                const qrVisuals = qrContainer.querySelectorAll('img, canvas');
+                if (qrVisuals.length > 1) {
+                    for (let i = 1; i < qrVisuals.length; i++) {
+                        qrVisuals[i].remove();
+                    }
                 }
-                const ctx = canvas.getContext('2d');
-                if (!ctx) return;
-
-                const logo = new Image();
-                logo.crossOrigin = 'anonymous';
-                logo.onload = function() {
-                    const logoSize = Math.round(canvas.width * 0.35);
-                    const padding = Math.round(logoSize * 0.10);
-                    const x = Math.round((canvas.width - logoSize) / 2);
-                    const y = Math.round((canvas.height - logoSize) / 2);
-
-                    // Draw white background circle
-                    ctx.fillStyle = '#ffffff';
-                    ctx.beginPath();
-                    ctx.arc(canvas.width / 2, canvas.height / 2, (logoSize / 2) + padding, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Draw the color logo
-                    ctx.drawImage(logo, x, y, logoSize, logoSize);
-                };
-                logo.src = '/images/HBC_Logo_Color.png';
-            };
-
-            tryDraw(5);
+                const qrVisual = qrContainer.querySelector('img, canvas');
+                if (!qrVisual) return;
+                qrVisual.style.display = 'block';
+                qrVisual.style.border = '10px solid #ffffff';
+                qrVisual.style.borderRadius = '12px';
+                qrVisual.style.background = '#ffffff';
+                qrVisual.style.boxShadow = '0 6px 18px rgba(0, 0, 0, 0.18)';
+            }, 120);
         }
     </script>
 
@@ -471,7 +458,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('/sw.js?v=20260328qr')
                     .then(function(registration) {
                         console.log('ServiceWorker registered: ', registration.scope);
                     })

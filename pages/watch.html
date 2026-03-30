@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -523,7 +523,6 @@
                         <a href="ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu two-column ministries-menu-list">
                             <li><a href="ministries.html">All Ministries</a></li>
-                            <li><a href="youth.html">Elevate Teens</a></li>
                             <li><a href="missions.html">Missions</a></li>
                             <li><a href="visitation.html">Visitation</a></li>
                             <li><a href="online-preaching.html">Online Preaching</a></li>
@@ -587,9 +586,9 @@
                     <div class="live-placeholder" id="livePlaceholder" style="background-image: url('images/Circle Logo.png');"></div>
                 </div>
                 <div class="live-overlay">
-                    <div>Service Times: Sunday 10:30 AM &nbsp;|&nbsp; Sunday 6:00 PM &nbsp;|&nbsp; Wednesday 7:00 PM (Central)</div>
+                    <div>Service Times: Sunday School 8:00-8:45 AM &nbsp;|&nbsp; Sunday Worship 9:00-11:00 AM &nbsp;|&nbsp; Age Group 11:00-11:45 AM &nbsp;|&nbsp; Gospel Hour 2:00-4:00 PM &nbsp;|&nbsp; Mon Bible School 5:30-6:30 PM &nbsp;|&nbsp; Fri Prayer Meeting 5:30-6:30 PM</div>
                     <div><strong id="liveCountdown">--:--:--</strong></div>
-                    <div id="nextServiceText">Next service: Sunday 10:30 AM (Central Time)</div>
+                    <div id="nextServiceText">Next service: Sunday School 8:00 AM</div>
                 </div>
                 <div class="featured-video-meta">
                     <h3 id="featuredVideoTitle">Live Stream</h3>
@@ -707,12 +706,14 @@
                     </div>
                 </div>
 
-                <div class="footer-section">
+                <div class=""footer-section"">
                     <h4>Service Times</h4>
-                    <p>Sunday School: 9:15 AM</p>
-                    <p>Sunday Morning: 10:30 AM</p>
-                    <p>Sunday Evening: 6:00 PM</p>
-                    <p>Wednesday Evening: 7:00 PM</p>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p>
                 </div>
 
                 <div class="footer-section">
@@ -797,13 +798,13 @@
                     },
                     {
                         id: 'dQw4w9WgXcQ',
-                        title: 'Sunday Evening Service',
+                        
                         date: 'February 2, 2026',
                         description: 'Join us for our Sunday evening service at Harvest Baptist Church Antipolo.'
                     },
                     {
                         id: 'mIeRU12STNw',
-                        title: 'Wednesday Evening Service',
+                        
                         date: 'January 29, 2026',
                         description: 'Midweek Bible study and prayer service.'
                     },
@@ -815,13 +816,13 @@
                     },
                     {
                         id: 'mIeRU12STNw',
-                        title: 'Sunday Evening Service',
+                        
                         date: 'January 26, 2026',
                         description: 'Join us for our Sunday evening service at Harvest Baptist Church Antipolo.'
                     },
                     {
                         id: 'mIeRU12STNw',
-                        title: 'Wednesday Evening Service',
+                        
                         date: 'January 22, 2026',
                         description: 'Midweek Bible study and prayer service.'
                     },
@@ -833,7 +834,7 @@
                     },
                     {
                         id: 'mIeRU12STNw',
-                        title: 'Sunday Evening Service',
+                        
                         date: 'January 19, 2026',
                         description: 'Join us for our Sunday evening service at Harvest Baptist Church Antipolo.'
                     }
@@ -1070,9 +1071,12 @@
         }
 
         const SERVICE_SCHEDULE = [
-            { day: 0, hour: 10, minute: 30, label: 'Sunday 10:30 AM' },
-            { day: 0, hour: 18, minute: 0, label: 'Sunday 6:00 PM' },
-            { day: 3, hour: 19, minute: 0, label: 'Wednesday 7:00 PM' }
+            { day: 0, hour: 8, minute: 0, label: 'Sunday School 8:00 AM' },
+            { day: 0, hour: 9, minute: 0, label: 'Sunday Worship Service 9:00 AM' },
+            { day: 0, hour: 11, minute: 0, label: 'Age Group Sessions 11:00 AM' },
+            { day: 0, hour: 14, minute: 0, label: 'Sunday Gospel Hour 2:00 PM' },
+            { day: 1, hour: 17, minute: 30, label: 'Monday Bible School 5:30 PM' },
+            { day: 5, hour: 17, minute: 30, label: 'Friday Prayer Meeting 5:30 PM' }
         ];
 
         function getNextServiceTime(nowTz) {
@@ -1244,6 +1248,7 @@
     </script>
 </body>
 </html>
+
 
 
 

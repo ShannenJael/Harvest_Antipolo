@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,8 +51,14 @@
             height: 240px;
         }
 
+        #heavenQr {
+            position: relative;
+            width: 240px;
+            height: 240px;
+        }
+
         #heavenQr canvas,
-        #heavenQr img {
+        .heaven-qr-image {
             width: 240px;
             height: 240px;
         }
@@ -65,8 +71,10 @@
             height: 96px;
             transform: translate(-50%, -50%);
             background: #ffffff;
-            border-radius: 6px;
-            padding: 6px;
+            border-radius: 12px;
+            padding: 10px;
+            border: 6px solid #ffffff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
             box-sizing: border-box;
             object-fit: contain;
             pointer-events: none;
@@ -127,7 +135,6 @@
                         <a href="ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu two-column ministries-menu-list">
                             <li><a href="ministries.html">All Ministries</a></li>
-                            <li><a href="youth.html">Elevate Teens</a></li>
                             <li><a href="missions.html">Missions</a></li>
                             <li><a href="visitation.html">Visitation</a></li>
                             <li><a href="online-preaching.html">Online Preaching</a></li>
@@ -277,7 +284,7 @@
                 <div class="container">
                     <div class="salvation-videos-grid">
                         <div class="video-wrapper">
-                            <iframe src="https://player.vimeo.com/video/51543389" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="The Gospel Message"></iframe>
+                            <iframe src="https://www.youtube.com/embed/7F_Bbjfe4gE?si=4SSQUqCD4k6LWa41" width="640" height="360" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="The Gospel Message"></iframe>
                         </div>
                         <div class="video-wrapper">
                             <iframe src="https://www.youtube.com/embed/mIeRU12STNw" width="640" height="360" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Heaven Message"></iframe>
@@ -421,7 +428,7 @@
             <p>Use your phone camera to view this page quickly.</p>
             <div class="heaven-qr-wrap">
                 <div class="heaven-qr-box" id="heavenQrBox">
-                    <div id="heavenQr" aria-label="Heaven Page QR Code"></div>
+                    <div id="heavenQr" aria-label="Heaven Page QR Code"><img class="heaven-qr-image" src="../images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code"><img class="heaven-qr-logo" src="../images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo"></div>
                 </div>
             </div>
         </div>
@@ -440,12 +447,14 @@
                     </div>
                 </div>
 
-                <div class="footer-section">
+                <div class=""footer-section"">
                     <h4>Service Times</h4>
-                    <p>Sunday School: 9:15 AM</p>
-                    <p>Sunday Morning: 10:30 AM</p>
-                    <p>Sunday Evening: 6:00 PM</p>
-                    <p>Wednesday Evening: 7:00 PM</p>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p>
                 </div>
 
                 <div class="footer-section">
@@ -472,13 +481,14 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/unified-qr-src.js?v=20260328"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="../js/pwa-install.js"></script>
     <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('/sw.js?v=20260328qr')
                     .then(function(registration) {
                         console.log('ServiceWorker registered: ', registration.scope);
                     })
@@ -495,73 +505,40 @@
 
         function renderHeavenQr() {
             const qrContainer = document.getElementById('heavenQr');
-            const qrBox = document.getElementById('heavenQrBox');
-            if (!qrContainer || typeof QRCode === 'undefined') return;
+            if (!qrContainer) return;
+            qrContainer.innerHTML = '<img class="heaven-qr-image" src="../images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code"><img class="heaven-qr-logo" src="../images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo">';
 
-            const pageUrl = 'https://hbcantipolo.com/pages/heaven.html';
-            qrContainer.innerHTML = '';
+            if (typeof QRCode === 'undefined') {
+                const qrSrc = (window.UNIFIED_QR_SRC && window.UNIFIED_QR_SRC.trim()) || '../images/HBC_Logo_Color.png';
+                const qrStyle = (window.UNIFIED_QR_STYLE && window.UNIFIED_QR_STYLE.trim()) || 'display: block; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);';
+                qrContainer.innerHTML = '<img src="' + qrSrc + '" style="' + qrStyle + '">';
+                return;
+            }
 
             new QRCode(qrContainer, {
-                text: pageUrl,
-                width: 240,
-                height: 240,
+                text: targetUrl,
+                width: 220,
+                height: 220,
                 colorDark: '#000000',
                 colorLight: '#ffffff',
                 correctLevel: QRCode.CorrectLevel.H
             });
 
-            if (qrBox) {
-                const existingLogo = qrBox.querySelector('.heaven-qr-logo');
-                if (existingLogo) existingLogo.remove();
-                const logoImg = document.createElement('img');
-                logoImg.className = 'heaven-qr-logo';
-                logoImg.alt = 'Harvest Baptist Church Antipolo Logo';
-                logoImg.src = '/pages/images/Circle Logo Black.png?v=1';
-                qrBox.appendChild(logoImg);
-            }
-
-            const tryDraw = (attemptsLeft) => {
-                const canvas = qrContainer.querySelector('canvas');
-                if (!canvas) {
-                    if (attemptsLeft > 0) setTimeout(() => tryDraw(attemptsLeft - 1), 60);
-                    return;
-                }
-                const ctx = canvas.getContext('2d');
-                if (!ctx) return;
-
-                const logo = new Image();
-                logo.onload = function() {
-                    const logoSize = Math.round(canvas.width * 0.40);
-                    const padding = Math.round(logoSize * 0.08);
-                    const x = Math.round((canvas.width - logoSize) / 2);
-                    const y = Math.round((canvas.height - logoSize) / 2);
-
-                    const tempCanvas = document.createElement('canvas');
-                    tempCanvas.width = logo.width;
-                    tempCanvas.height = logo.height;
-                    const tempCtx = tempCanvas.getContext('2d');
-                    if (!tempCtx) return;
-                    tempCtx.drawImage(logo, 0, 0);
-
-                    const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-                    const data = imageData.data;
-                    for (let i = 0; i < data.length; i += 4) {
-                        if (data[i + 3] > 0) {
-                            data[i] = 0;
-                            data[i + 1] = 0;
-                            data[i + 2] = 0;
-                        }
+            setTimeout(function() {
+                const qrVisuals = qrContainer.querySelectorAll('img, canvas');
+                if (qrVisuals.length > 1) {
+                    for (let i = 1; i < qrVisuals.length; i++) {
+                        qrVisuals[i].remove();
                     }
-                    tempCtx.putImageData(imageData, 0, 0);
-
-                    ctx.fillStyle = '#ffffff';
-                    ctx.fillRect(x - padding, y - padding, logoSize + (padding * 2), logoSize + (padding * 2));
-                    ctx.drawImage(tempCanvas, x, y, logoSize, logoSize);
-                };
-                logo.src = '/pages/images/Circle Logo Black.png?v=1';
-            };
-
-            tryDraw(5);
+                }
+                const qrVisual = qrContainer.querySelector('img, canvas');
+                if (!qrVisual) return;
+                qrVisual.style.display = 'block';
+                qrVisual.style.border = '10px solid #ffffff';
+                qrVisual.style.borderRadius = '12px';
+                qrVisual.style.background = '#ffffff';
+                qrVisual.style.boxShadow = '0 6px 18px rgba(0, 0, 0, 0.18)';
+            }, 120);
         }
     </script>
 </body>

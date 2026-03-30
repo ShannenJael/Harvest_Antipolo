@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,7 +82,6 @@
                         <a href="ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu two-column ministries-menu-list">
                             <li><a href="ministries.html">All Ministries</a></li>
-                            <li><a href="youth.html">Elevate Teens</a></li>
                             <li><a href="missions.html">Missions</a></li>
                             <li><a href="visitation.html">Visitation</a></li>
                             <li><a href="online-preaching.html">Online Preaching</a></li>
@@ -170,7 +169,7 @@
                     <h3>GCash</h3>
                     <p>Send your gift instantly via GCash. Scan the QR code below or send directly to our GCash number.</p>
                     <div style="text-align:center; margin: 15px 0;">
-                        <img src="../images/gcash-antipolo.jpg" alt="GCash QR Code - Harvest Baptist Church Antipolo" style="max-width:220px; width:100%; height:auto; border-radius:8px; border:2px solid #14AFB1;">
+                        <img id="gcashQrImg" src="../images/gcash-antipolo.jpg" alt="GCash QR Code - Harvest Baptist Church Antipolo" style="display: block; max-width:220px; width:100%; height:auto; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);">
                     </div>
                 </div>
 
@@ -212,7 +211,7 @@
             <div class="giving-contact-box" style="text-align: center;">
                 <h3>Give by QR Code</h3>
                 <p>Scan to open our secure giving page.</p>
-                <img src="../images/give-qr.png" alt="Give Page QR Code" style="max-width: 220px; width: 100%; height: auto; margin: 10px auto;">
+                <img id="giveQrImg" src="../images/give-qr.png" alt="Give Page QR Code" style="display: block; max-width: 220px; width: 100%; height: auto; margin: 10px auto; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);">
             </div>
         </div>
     </section>
@@ -239,12 +238,14 @@
                         <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
+                <div class=""footer-section"">
                     <h4>Service Times</h4>
-                    <p>Sunday School: 9:15 AM</p>
-                    <p>Sunday Morning: 10:30 AM</p>
-                    <p>Sunday Evening: 6:00 PM</p>
-                    <p>Wednesday Evening: 7:00 PM</p>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
@@ -268,7 +269,23 @@
         </div>
     </footer>
     <script src="../js/main.js"></script>
+    <script src="../js/unified-qr-src.js"></script>
     <script src="../js/pwa-install.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.UNIFIED_QR_SRC) return;
+            var qr1 = document.getElementById('gcashQrImg');
+            var qr2 = document.getElementById('giveQrImg');
+            if (qr1) {
+                qr1.src = '../images/gcash-antipolo.jpg';
+                qr1.style.cssText = 'display: block; max-width:220px; width:100%; height:auto; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);';
+            }
+            if (qr2) {
+                qr2.src = '../images/give-qr.png';
+                qr2.style.cssText = 'display: block; max-width: 220px; width: 100%; height: auto; margin: 10px auto; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);';
+            }
+        });
+    </script>
     <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {

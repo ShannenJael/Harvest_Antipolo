@@ -50,8 +50,9 @@ if (-not (Test-Path $cfg.KeyPath)) {
 
 $remote = "$($cfg.User)@$($cfg.Host)"
 $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+$remoteRoot = if ($cfg.RemotePath -match "^(.+)/[^/]+$") { $Matches[1] } else { throw "Could not derive remote root from RemotePath '$($cfg.RemotePath)'." }
 $backupName = "public_html_pre_${Target}_deploy_${timestamp}.tgz"
-$backupPath = "/home/$($cfg.User)/backups/$backupName"
+$backupPath = "$remoteRoot/backups/$backupName"
 
 Write-Host "Target: $Target"
 Write-Host "Remote: $remote"
@@ -59,7 +60,7 @@ Write-Host "Path:   $($cfg.RemotePath)"
 Write-Host "Backup: $backupPath"
 
 $backupCmd = @"
-mkdir -p /home/$($cfg.User)/backups &&
+mkdir -p '$remoteRoot/backups' &&
 tar -czf '$backupPath' -C '$($cfg.RemotePath)' index.html manifest.json sw.js css js images pages php data .gitignore .htaccess-redirect Dockerfile make_pages.py new_movers_202601120128.xlsx 'HBC Logo colored.png' 'HBC Logo white.png' 'Harvest Cover Photo.png' 2>/dev/null || true
 "@
 

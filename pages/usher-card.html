@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -272,7 +272,6 @@
                         <a href="ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu two-column ministries-menu-list">
                             <li><a href="ministries.html">All Ministries</a></li>
-                            <li><a href="youth.html">Elevate Teens</a></li>
                             <li><a href="missions.html">Missions</a></li>
                             <li><a href="visitation.html">Visitation</a></li>
                             <li><a href="online-preaching.html">Online Preaching</a></li>
@@ -385,10 +384,12 @@
                                 <label for="serviceTime">Service</label>
                                 <select id="serviceTime" name="serviceTime">
                                     <option value="">Select...</option>
-                                    <option value="Sunday School">Sunday School (9:15 AM)</option>
-                                    <option value="Sunday Morning">Sunday Morning (10:30 AM)</option>
-                                    <option value="Sunday Evening">Sunday Evening (6:00 PM)</option>
-                                    <option value="Wednesday Evening">Wednesday Evening (7:00 PM)</option>
+                                    <option value="Sunday School">Sunday School (8:00 AM - 8:45 AM)</option>
+                                    <option value="Sunday Worship Service">Sunday Worship Service (9:00 AM - 11:00 AM)</option>
+                                    <option value="Age Group Sessions">Age Group Sessions (11:00 AM - 11:45 AM)</option>
+                                    <option value="Sunday Gospel Hour">Sunday Gospel Hour (2:00 PM - 4:00 PM)</option>
+                                    <option value="Monday Bible School">Monday Bible School (5:30 PM - 6:30 PM)</option>
+                                    <option value="Friday Prayer Meeting">Friday Prayer Meeting (5:30 PM - 6:30 PM)</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -420,8 +421,8 @@
 
                         <div class="form-row three-col">
                             <div class="form-group">
-                                <label for="state">State</label>
-                                <input type="text" id="state" name="state" value="FL">
+                                <label for="barangay">Barangay</label>
+                                <input type="text" id="barangay" name="barangay">
                             </div>
                             <div class="form-group">
                                 <label for="zip">Zip Code</label>
@@ -457,10 +458,6 @@
                             <div class="checkbox-item">
                                 <input type="checkbox" id="newResident" name="newResident">
                                 <label for="newResident">New Resident</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="activeMilitary" name="activeMilitary">
-                                <label for="activeMilitary">Active Military</label>
                             </div>
                         </div>
 
@@ -611,12 +608,14 @@
                     </div>
                 </div>
 
-                <div class="footer-section">
+                <div class=""footer-section"">
                     <h4>Service Times</h4>
-                    <p>Sunday School: 9:15 AM</p>
-                    <p>Sunday Morning: 10:30 AM</p>
-                    <p>Sunday Evening: 6:00 PM</p>
-                    <p>Wednesday Evening: 7:00 PM</p>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p>
                 </div>
 
                 <div class="footer-section">
@@ -676,14 +675,13 @@
                 streetAddress: formData.get('streetAddress'),
                 apartment: formData.get('apartment'),
                 city: formData.get('city'),
-                state: formData.get('state'),
+                barangay: formData.get('barangay'),
                 zip: formData.get('zip'),
                 phone: formData.get('phone'),
                 email1: formData.get('email1'),
                 email2: formData.get('email2'),
                 firstTimeGuest: formData.get('firstTimeGuest') === 'on',
                 newResident: formData.get('newResident') === 'on',
-                activeMilitary: formData.get('activeMilitary') === 'on',
                 becomeChristian: formData.get('becomeChristian') === 'on',
                 knowMoreAboutChurch: formData.get('knowMoreAboutChurch') === 'on',
                 visitFromPastor: formData.get('visitFromPastor') === 'on',

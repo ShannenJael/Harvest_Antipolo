@@ -1,0 +1,8 @@
+﻿/* Force override: info boxes */
+.info-box-teal{background-color:#1F1F1F !important;}
+.info-boxes-section{padding:2.5rem 0 !important;}
+.info-boxes-grid,.info-boxes-grid-sized{max-width:980px !important;gap:.9rem !important;}
+.info-boxes-grid .info-box,.info-boxes-grid-sized .info-box{min-height:330px !important;padding:1.9rem 1.8rem !important;}
+.info-box h3{font-size:2rem !important;margin-bottom:1rem !important;padding-bottom:.65rem !important;}
+.info-box-list li{padding:.58rem 0 !important;}
+.btn-info-box{color:#1F1F1F !important;min-width:160px !important;padding:.8rem 2rem !important;}
