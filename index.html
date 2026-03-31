@@ -74,6 +74,7 @@
             width: 96px;
             height: 96px;
             transform: translate(-50%, -50%);
+            z-index: 2;
             background: #ffffff;
             border-radius: 12px;
             padding: 10px;
@@ -401,7 +402,7 @@
             <p>Use your phone camera to view this page quickly.</p>
             <div class="home-qr-wrap">
                 <div class="home-qr-box" id="homeQrBox">
-                    <div id="homeQr" aria-label="Home Page QR Code"><img class="home-qr-image" src="images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code"><img class="home-qr-logo" src="images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo"></div>
+                    <div id="homeQr" aria-label="Home Page QR Code"><img class="home-qr-image" src="images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code"><img class="home-qr-logo" src="images/HBC_Logo_Color.png?v=20260331qrlogo" alt="Harvest Baptist Church Antipolo Logo"></div>
                 </div>
             </div>
         </div>
@@ -421,12 +422,14 @@
             const qrContainer = document.getElementById('homeQr');
             if (!qrContainer) return;
             const targetUrl = window.location.origin + '/index.html';
-            qrContainer.innerHTML = '<img class="home-qr-image" src="images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code"><img class="home-qr-logo" src="images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo">';
+            const logoHtml = '<img class="home-qr-logo" src="images/HBC_Logo_Color.png?v=20260331qrlogo" alt="Harvest Baptist Church Antipolo Logo">';
+            qrContainer.innerHTML = '<img class="home-qr-image" src="images/unified-qr.png" alt="Harvest Baptist Church Antipolo QR Code">' + logoHtml;
 
             if (typeof QRCode === 'undefined') {
                 return;
             }
 
+            qrContainer.innerHTML = '';
             new QRCode(qrContainer, {
                 text: targetUrl,
                 width: 220,
@@ -437,19 +440,20 @@
             });
 
             setTimeout(function() {
-                const qrVisuals = qrContainer.querySelectorAll('img, canvas');
-                if (qrVisuals.length > 1) {
-                    for (let i = 1; i < qrVisuals.length; i++) {
-                        qrVisuals[i].remove();
-                    }
-                }
                 const qrVisual = qrContainer.querySelector('img, canvas');
                 if (!qrVisual) return;
+                const extraVisuals = qrContainer.querySelectorAll('img, canvas');
+                if (extraVisuals.length > 1) {
+                    for (let i = 1; i < extraVisuals.length; i++) {
+                        extraVisuals[i].remove();
+                    }
+                }
                 qrVisual.style.display = 'block';
                 qrVisual.style.border = '10px solid #ffffff';
                 qrVisual.style.borderRadius = '12px';
                 qrVisual.style.background = '#ffffff';
                 qrVisual.style.boxShadow = '0 6px 18px rgba(0, 0, 0, 0.18)';
+                qrContainer.insertAdjacentHTML('beforeend', logoHtml);
             }, 120);
         }
     </script>

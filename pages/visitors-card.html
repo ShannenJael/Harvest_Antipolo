@@ -240,8 +240,14 @@
             height: 240px;
         }
 
+        #visitorQr {
+            position: relative;
+            width: 240px;
+            height: 240px;
+        }
+
         #visitorQr canvas,
-        #visitorQr img {
+        .visitor-qr-image {
             width: 240px;
             height: 240px;
         }
@@ -253,9 +259,12 @@
             width: 96px;
             height: 96px;
             transform: translate(-50%, -50%);
+            z-index: 2;
             background: #ffffff;
-            border-radius: 6px;
-            padding: 6px;
+            border-radius: 12px;
+            padding: 10px;
+            border: 6px solid #ffffff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
             box-sizing: border-box;
             object-fit: contain;
             pointer-events: none;
@@ -805,15 +814,17 @@
             const qrContainer = document.getElementById('visitorQr');
             if (!qrContainer) return;
             const targetUrl = window.location.origin + '/pages/visitors-card.html';
-            qrContainer.innerHTML = '';
+            const logoHtml = '<img class="visitor-qr-logo" src="../images/HBC_Logo_Color.png?v=20260331visitorqr" alt="Harvest Baptist Church Antipolo Logo">';
+            qrContainer.innerHTML = '<img class="visitor-qr-image" src="../images/unified-qr.png" alt="Visitor Card QR Code">' + logoHtml;
 
             if (typeof QRCode === 'undefined') {
                 const qrSrc = (window.UNIFIED_QR_SRC && window.UNIFIED_QR_SRC.trim()) || '../images/HBC_Logo_Color.png';
                 const qrStyle = (window.UNIFIED_QR_STYLE && window.UNIFIED_QR_STYLE.trim()) || 'display: block; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);';
-                qrContainer.innerHTML = '<img src="' + qrSrc + '" style="' + qrStyle + '">';
+                qrContainer.innerHTML = '<img class="visitor-qr-image" src="' + qrSrc + '" style="' + qrStyle + '" alt="Visitor Card QR Code">' + logoHtml;
                 return;
             }
 
+            qrContainer.innerHTML = '';
             new QRCode(qrContainer, {
                 text: targetUrl,
                 width: 220,
@@ -824,19 +835,20 @@
             });
 
             setTimeout(function() {
-                const qrVisuals = qrContainer.querySelectorAll('img, canvas');
-                if (qrVisuals.length > 1) {
-                    for (let i = 1; i < qrVisuals.length; i++) {
-                        qrVisuals[i].remove();
-                    }
-                }
                 const qrVisual = qrContainer.querySelector('img, canvas');
                 if (!qrVisual) return;
+                const extraVisuals = qrContainer.querySelectorAll('img, canvas');
+                if (extraVisuals.length > 1) {
+                    for (let i = 1; i < extraVisuals.length; i++) {
+                        extraVisuals[i].remove();
+                    }
+                }
                 qrVisual.style.display = 'block';
                 qrVisual.style.border = '10px solid #ffffff';
                 qrVisual.style.borderRadius = '12px';
                 qrVisual.style.background = '#ffffff';
                 qrVisual.style.boxShadow = '0 6px 18px rgba(0, 0, 0, 0.18)';
+                qrContainer.insertAdjacentHTML('beforeend', logoHtml);
             }, 120);
         }
     </script>
