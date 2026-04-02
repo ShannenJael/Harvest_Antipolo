@@ -27,6 +27,14 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css?v=2">
+    <style>
+        @media (max-width: 768px) {
+            #gcashQrImg {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Top Bar (Logo Only - FBC Hammond Style) -->
@@ -169,7 +177,7 @@
                     <h3>GCash</h3>
                     <p>Send your gift instantly via GCash. Scan the QR code below or send directly to our GCash number.</p>
                     <div style="text-align:center; margin: 15px 0;">
-                        <img id="gcashQrImg" src="../images/gcash-antipolo.jpg" alt="GCash QR Code - Harvest Baptist Church Antipolo" style="display: block; max-width:220px; width:100%; height:auto; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);">
+                        <img id="gcashQrImg" src="../images/gcash-antipolo.jpg" alt="GCash QR Code - Harvest Baptist Church Antipolo" style="display: block; max-width: 220px; width: 100%; height: auto; margin: 0 auto; border-radius: 12px;">
                     </div>
                 </div>
 
@@ -288,7 +296,7 @@
             var qr2 = document.getElementById('giveQrImg');
             if (qr1) {
                 qr1.src = '../images/gcash-antipolo.jpg';
-                qr1.style.cssText = 'display: block; max-width:220px; width:100%; height:auto; border: 10px solid #ffffff; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);';
+                qr1.style.cssText = 'display: block; max-width: 220px; width: 100%; height: auto; margin: 0 auto; border-radius: 12px;';
             }
             if (qr2) {
                 qr2.src = '../images/give-qr.png';
