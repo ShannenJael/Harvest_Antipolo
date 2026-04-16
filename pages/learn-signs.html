@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Sign Language at Harvest Baptist Church Antipolo through Bible-centered lessons and practice videos.">
+    <title>Learn Sign Language | Harvest Baptist Church Antipolo</title>
+
+    <link rel="icon" type="image/png" href="../images/HBC_Logo_Color.png">
+    <link rel="apple-touch-icon" href="../images/HBC_Logo_Color.png">
+
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#14AFB1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HBC Antipolo">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .page-header--compact {
+            min-height: 280px;
+        }
+
+        .sign-intro-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .sign-info-card,
+        .sign-cta-card,
+        .sign-video-card {
+            background: #ffffff;
+            border: 1px solid rgba(20, 175, 177, 0.12);
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .sign-info-card,
+        .sign-cta-card {
+            padding: 28px;
+        }
+
+        .sign-info-card h2,
+        .sign-video-section h2 {
+            margin-bottom: 16px;
+        }
+
+        .sign-info-card p,
+        .sign-cta-card p {
+            margin-bottom: 14px;
+        }
+
+        .sign-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .sign-highlight {
+            background: #f7fbfb;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .sign-highlight i {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .sign-highlight h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: #1f1f1f;
+        }
+
+        .sign-highlight p {
+            margin: 0;
+            color: #4f4f4f;
+            font-size: 0.95rem;
+        }
+
+        .sign-cta-card {
+            background: linear-gradient(180deg, #14afb1 0%, #0f8486 100%);
+            color: #ffffff;
+        }
+
+        .sign-cta-card h3,
+        .sign-cta-card p,
+        .sign-cta-card li {
+            color: #ffffff;
+        }
+
+        .sign-cta-card ul {
+            margin: 16px 0 22px;
+            padding-left: 18px;
+        }
+
+        .sign-cta-card li + li {
+            margin-top: 8px;
+        }
+
+        .sign-cta-card .btn {
+            background: #ffffff;
+            color: var(--primary-color);
+        }
+
+        .sign-video-section {
+            margin-top: 34px;
+        }
+
+        .sign-video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 18px;
+        }
+
+        .sign-video-card {
+            padding: 12px;
+        }
+
+        .sign-video-card h3 {
+            margin: 0 0 10px;
+            font-size: 1rem;
+            color: #1a1a1a;
+        }
+
+        .sign-video-shell {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .sign-video-shell video {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            background: #000000;
+        }
+
+        .sign-video-cover {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), url('../images/HBC_Logo_Color.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 120px, 120px;
+            z-index: 1;
+        }
+
+        .sign-video-trigger {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            border: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #ffffff;
+            background: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.58));
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .sign-video-trigger i {
+            font-size: 1.2rem;
+        }
+
+        .sign-video-shell.is-loaded .sign-video-trigger,
+        .sign-video-shell.is-loaded .sign-video-cover {
+            display: none;
+        }
+
+        .sign-note {
+            margin-top: 16px;
+            color: #5d5d5d;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .sign-intro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sign-highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-logo">
+                    <a href="../index.html">
+                        <img src="../images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="mobile-logo">
+                    <a href="../index.html">
+                        <img src="../images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                    <span class="menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="menu-label">Menu</span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="dropdown">
+                        <a href="#">I'm New <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mission.html">Our Mission</a></li>
+                            <li><a href="beliefs.html">What We Believe</a></li>
+                            <li><a href="staff.html">Meet Our Staff</a></li>
+                            <li><a href="visit.html">Plan Your Visit</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="visitors-card.html">Visitors Card</a></li>
+                            <li><a href="prayer.html">Prayer Requests</a></li>
+                            <li><a href="counseling.html">Counseling</a></li>
+                            <li><a href="heaven.html">Heaven</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="next-steps.html">Next Steps</a></li>
+                    <li class="dropdown">
+                        <a href="ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu two-column ministries-menu-list">
+                            <li><a href="ministries.html">All Ministries</a></li>
+                            <li><a href="missions.html">Missions</a></li>
+                            <li><a href="visitation.html">Visitation</a></li>
+                            <li><a href="online-preaching.html">Online Preaching</a></li>
+                            <li><a href="international-bible-school-services.html">International Bible School Services</a></li>
+                            <li><a href="police-officers-bible-study.html">Police Officers Bible Study</a></li>
+                            <li class="menu-group-label">Group Ministries</li>
+                            <li><a href="golden-dads.html">Golden Dads</a></li>
+                            <li><a href="golden-moms.html">Golden Moms</a></li>
+                            <li><a href="young-dads.html">Young Dads</a></li>
+                            <li><a href="young-moms.html">Young Moms</a></li>
+                            <li><a href="couples.html">Couples</a></li>
+                            <li><a href="youth-single.html">Youth / Single</a></li>
+                            <li class="menu-group-label">Outreach Ministries</li>
+                            <li><a href="soul-winning.html">Soul Winning</a></li>
+                            <li><a href="door-knocking.html">Door Knocking</a></li>
+                            <li><a href="outreaches.html">Outreaches</a></li>
+                            <li><a href="tracts-giving.html">Tracts Giving</a></li>
+                            <li><a href="bible-study.html">Bible Study</a></li>
+                            <li><a href="funeral-services.html">Funeral Services</a></li>
+                            <li><a href="feeding-ministry.html">Feeding Ministry</a></li>
+                            <li><a href="fetching-kids.html">Fetching Kids</a></li>
+                            <li class="menu-group-label">Music, Training & Camps</li>
+                            <li><a href="choir.html">Choir</a></li>
+                            <li><a href="music-ministry.html">Music Ministry</a></li>
+                            <li><a href="teachers-training.html">Teacher's Training</a></li>
+                            <li><a href="sports-ministry.html">Sports Ministry</a></li>
+                            <li><a href="childrens-camp.html">Children's Camp</a></li>
+                            <li><a href="family-camp.html">Family Camp</a></li>
+                            <li><a href="youth-camp.html">Youth Camp</a></li>
+                            <li><a href="bible-institute.html">Faith Bible Institute</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Media <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="watch.html">Watch</a></li>
+                            <li><a href="learn-signs.html">Learn Sign Language</a></li>
+                            <li><a href="https://www.facebook.com/" target="_blank">Connect on Facebook</a></li>
+                            <li><a href="media-library.html">Harvest Media Library</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="directions.html">Directions</a></li>
+                    <li><a href="give.html">Give</a></li>
+                </ul>
+
+                <div class="nav-cta-buttons">
+                    <a href="visit.html" class="btn btn-nav-outline">Plan Your Visit</a>
+                    <a href="heaven.html" class="btn btn-nav-filled">Heaven</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header page-header--compact">
+        <div class="page-header-overlay"></div>
+        <div class="container">
+            <h1>Learn Sign Language</h1>
+            <p>Growing communication, fellowship, and Gospel outreach through practical lessons.</p>
+        </div>
+    </section>
+
+    <section class="ministry-single-content">
+        <div class="container">
+            <div class="sign-intro-grid">
+                <div class="sign-info-card">
+                    <h2><i class="fas fa-hands"></i> Learn Sign Language at HBC Antipolo</h2>
+                    <p>This page is designed for our church family and guests who want to learn sign language in a simple, Bible-centered way. These lessons can help us communicate more clearly, welcome more people warmly, and serve with greater compassion.</p>
+                    <p>You can use the videos below for personal study, ministry practice, and review during the week. Each lesson loads only when clicked so the page stays fast even with many videos.</p>
+                    <div class="sign-highlights">
+                        <div class="sign-highlight">
+                            <i class="fas fa-users"></i>
+                            <h3>Who Can Join</h3>
+                            <p>Teens, adults, volunteers, and anyone willing to learn.</p>
+                        </div>
+                        <div class="sign-highlight">
+                            <i class="fas fa-book-open"></i>
+                            <h3>What You Will Practice</h3>
+                            <p>Vocabulary, conversation, worship terms, and ministry use.</p>
+                        </div>
+                        <div class="sign-highlight">
+                            <i class="fas fa-clock"></i>
+                            <h3>Learn at Your Pace</h3>
+                            <p>Review the lessons anytime and return to them as needed.</p>
+                        </div>
+                        <div class="sign-highlight">
+                            <i class="fas fa-heart"></i>
+                            <h3>Why It Matters</h3>
+                            <p>Every new skill becomes another way to show Christ's love.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="sign-cta-card">
+                    <h3>Ready to Start?</h3>
+                    <p>If you want to join, ask questions, or use these lessons in ministry, we would love to help.</p>
+                    <ul>
+                        <li>Use the lessons for weekly practice</li>
+                        <li>Share the page with ministry workers</li>
+                        <li>Reach out if you want guided instruction</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                </aside>
+            </div>
+
+            <div class="sign-video-section">
+                <h2><i class="fas fa-video"></i> Video Lessons</h2>
+                <p>Tap any lesson below to load the video. Add your MP4 files to <code>/videos/learn-signs/</code> and keep the filenames below, or update the file list in this page if your filenames differ.</p>
+                <div class="sign-video-grid" id="signVideoGrid"></div>
+                <p class="sign-note">Current lessons include religious signs, national signs, emotion signs, countries, animals, days of the week, and Bible names.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Learn Together With Us</h2>
+                <p>We would love to help you grow in ministry, communication, and Christlike care.</p>
+                <a href="visit.html" class="btn btn-large btn-white">Plan Your Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Harvest Baptist Church Antipolo</h3>
+                    <p>Antipolo, Philippines</p>
+                    <p class="footer-tagline">A Place Where Families Grow in Faith</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Service Times</h4>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="beliefs.html">What We Believe</a></li>
+                        <li><a href="ministries.html">Ministries</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Block 50 Lot 9, Phase 3-A, Brgy. San Isidro, Zontaville, Padilla, Antipolo, Philippines, 187</p>
+                    <p><i class="fas fa-phone"></i> 09665744044</p>
+                    <p><i class="fas fa-envelope"></i> Harvest.baptist@yahoo.com</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Harvest Baptist Church Antipolo of Antipolo, Philippines. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/pwa-install.js"></script>
+    <script>
+        const signLessonVideos = [
+            { title: 'Religious Signs', file: 'religious-signs.mp4' },
+            { title: 'National Signs', file: 'national-signs.mp4' },
+            { title: 'Emotion Signs', file: 'emotion-signs.mp4' },
+            { title: 'Emotion Signs Part 2', file: 'emotion-signs-part-2.mp4' },
+            { title: 'Emotion Signs Part 3', file: 'emotion-signs-part-3.mp4' },
+            { title: 'Emotion Signs Part 4', file: 'emotion-signs-part-4.mp4' },
+            { title: 'Countries Signs', file: 'countries-signs.mp4' },
+            { title: 'Animals Signs', file: 'animals-signs.mp4' },
+            { title: 'Animals Signs Part 2', file: 'animals-signs-part-2.mp4' },
+            { title: 'Days of the Week', file: 'days-of-the-week.mp4' },
+            { title: 'Sign Names of People in the Bible - Old Testament', file: 'sign-names-people-bible-old-testament.mp4' }
+        ];
+
+        function attachLazyVideoSource(video) {
+            if (!video || video.dataset.loaded === 'true') {
+                return;
+            }
+
+            const source = video.querySelector('source[data-src]');
+            if (!source) {
+                return;
+            }
+
+            source.src = source.dataset.src;
+            video.dataset.loaded = 'true';
+            video.load();
+        }
+
+        function buildVideoGrid() {
+            const grid = document.getElementById('signVideoGrid');
+            if (!grid) {
+                return;
+            }
+
+            grid.innerHTML = signLessonVideos.map((lesson) => `
+                <article class="sign-video-card">
+                    <h3>${lesson.title}</h3>
+                    <div class="sign-video-shell">
+                        <div class="sign-video-cover" aria-hidden="true"></div>
+                        <video controls preload="none" data-lazy-video poster="../images/HBC_Logo_Color.png">
+                            <source data-src="../videos/learn-signs/${lesson.file}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button type="button" class="sign-video-trigger">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Tap to Load Video</span>
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function bindLazyVideos() {
+            document.querySelectorAll('video[data-lazy-video]').forEach((video) => {
+                const shell = video.closest('.sign-video-shell');
+                const trigger = shell ? shell.querySelector('.sign-video-trigger') : null;
+
+                const loadVideo = () => {
+                    attachLazyVideoSource(video);
+                    if (shell) {
+                        shell.classList.add('is-loaded');
+                    }
+                };
+
+                const loadAndPlay = () => {
+                    const shouldStart = video.dataset.loaded !== 'true';
+                    loadVideo();
+                    if (shouldStart) {
+                        video.play().catch(() => {});
+                    }
+                };
+
+                if (trigger) {
+                    trigger.addEventListener('click', loadAndPlay);
+                }
+
+                video.addEventListener('play', loadVideo);
+            });
+        }
+
+        buildVideoGrid();
+        bindLazyVideos();
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+    </script>
+</body>
+</html>

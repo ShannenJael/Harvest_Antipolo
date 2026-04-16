@@ -17,9 +17,14 @@ data/media-library/
 
 # Node modules (if any)
 node_modules/
+playwright-report/
+test-results/
 
 # Logs
 *.log
+
+# Live snapshots used for testing
+.live-snapshots/
 
 # Zip archives (too large)
 *.zip

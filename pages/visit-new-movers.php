@@ -323,6 +323,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a href="#">Media <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="watch.html">Watch</a></li>
+                            <li><a href="learn-signs.html">Learn Sign Language</a></li>
                             <li><a href="https://www.facebook.com/calvarybaptistchurchfwb" target="_blank">Connect on Facebook</a></li>
                             <li><a href="media-library.html">Harvest Media Library</a></li>
                             <li><a href="privacy.html">Privacy Policy</a></li>

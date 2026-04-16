@@ -1,0 +1,28 @@
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ${SITE_ROOT:-.}:/usr/share/nginx/html:ro
+
+  playwright:
+    image: mcr.microsoft.com/playwright:${PLAYWRIGHT_IMAGE_TAG:-v1.52.0-noble}
+    working_dir: /work
+    depends_on:
+      - web
+    environment:
+      CI: "1"
+      PLAYWRIGHT_BASE_URL: http://web
+    volumes:
+      - ./:/work
+      - node_modules:/work/node_modules
+      - ms_playwright:/ms-playwright
+    command: >
+      bash -lc "npm install &&
+      npx wait-on http://web &&
+      npx playwright test"
+
+volumes:
+  node_modules:
+  ms_playwright:

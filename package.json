@@ -1,0 +1,15 @@
+{
+  "name": "hbcantipolo-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Dockerized Playwright smoke tests for Harvest Baptist Church Antipolo",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.52.0",
+    "wait-on": "8.0.3"
+  }
+}
