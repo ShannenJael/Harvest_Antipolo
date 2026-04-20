@@ -1,6 +1,6 @@
 // Harvest Baptist Church Antipolo Service Worker
 // Change this version number when you deploy updates
-const CACHE_VERSION = 'v11';
+const CACHE_VERSION = 'v12';
 const CACHE_NAME = 'hbc-antipolo-' + CACHE_VERSION;
 
 const urlsToCache = [
@@ -20,6 +20,7 @@ const urlsToCache = [
     '/pages/give.html',
     '/pages/visit.html',
     '/pages/heaven.html',
+    '/pages/how-to-use.html',
     '/pages/directions.html',
     '/pages/mission.html',
     '/pages/missions.html',

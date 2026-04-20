@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to use the visitation tools, media library, and giving page at Harvest Baptist Church Antipolo.">
+    <title>How to Use | Harvest Baptist Church Antipolo</title>
+
+    <link rel="icon" type="image/png" href="../images/HBC_Logo_Color.png">
+    <link rel="apple-touch-icon" href="../images/HBC_Logo_Color.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#14AFB1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HBC Antipolo">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css?v=20260327v2">
+
+    <style>
+        .help-overview {
+            padding: 32px 0 12px;
+        }
+
+        .help-intro {
+            background: linear-gradient(135deg, #0f696b, #14afb1);
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+        }
+
+        .help-intro h2 {
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .help-intro p {
+            margin: 0;
+            line-height: 1.8;
+            max-width: 760px;
+        }
+
+        .jump-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .jump-card {
+            background: #ffffff;
+            color: #222;
+            border-radius: 16px;
+            padding: 22px;
+            text-decoration: none;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(20, 175, 177, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .jump-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .jump-card i {
+            color: var(--primary-teal);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .jump-card h3 {
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        .jump-card p {
+            margin: 0;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .help-section {
+            padding: 18px 0 4px;
+        }
+
+        .help-block {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+        }
+
+        .help-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .help-heading i {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-green));
+            color: #ffffff;
+            font-size: 1.3rem;
+        }
+
+        .help-heading h2 {
+            margin: 0;
+        }
+
+        .help-heading p {
+            margin: 4px 0 0;
+            color: #666;
+        }
+
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 22px 0;
+        }
+
+        .step-card {
+            background: #f8fbfb;
+            border: 1px solid #e5f1f1;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #ffffff;
+            background: var(--primary-green);
+            margin-bottom: 12px;
+        }
+
+        .step-card h3 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .step-card p,
+        .tip-list li,
+        .link-list li {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .tip-box {
+            background: #fff9ea;
+            border-left: 5px solid #d4af37;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-top: 14px;
+        }
+
+        .tip-box h3 {
+            margin-bottom: 10px;
+            color: #5c4608;
+        }
+
+        .tip-list,
+        .link-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .action-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .support-note {
+            text-align: center;
+            background: #111;
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+
+        .support-note h2 {
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .support-note p {
+            margin: 0 auto 18px;
+            max-width: 700px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        @media (max-width: 768px) {
+            .help-intro,
+            .help-block,
+            .support-note {
+                padding: 24px;
+            }
+
+            .help-heading {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-logo">
+                    <a href="../index.html">
+                        <img src="../images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="mobile-logo">
+                    <a href="../index.html">
+                        <img src="../images/HBC_Logo_Color.png" alt="Harvest Baptist Church Antipolo Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                    <span class="menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="menu-label">Menu</span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="dropdown">
+                        <a href="#">I'm New <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mission.html">Our Mission</a></li>
+                            <li><a href="beliefs.html">What We Believe</a></li>
+                            <li><a href="staff.html">Meet Our Staff</a></li>
+                            <li><a href="visit.html">Plan Your Visit</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="visitors-card.html">Visitors Card</a></li>
+                            <li><a href="prayer.html">Prayer Requests</a></li>
+                            <li><a href="counseling.html">Counseling</a></li>
+                            <li><a href="heaven.html">Heaven</a></li>
+                            <li><a href="how-to-use.html">How to Use</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="next-steps.html">Next Steps</a></li>
+                    <li class="dropdown">
+                        <a href="ministries.html">Ministries <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu two-column ministries-menu-list">
+                            <li><a href="ministries.html">All Ministries</a></li>
+                            <li><a href="missions.html">Missions</a></li>
+                            <li><a href="visitation.html">Visitation</a></li>
+                            <li><a href="online-preaching.html">Online Preaching</a></li>
+                            <li><a href="international-bible-school-services.html">International Bible School Services</a></li>
+                            <li><a href="police-officers-bible-study.html">Police Officers Bible Study</a></li>
+                            <li class="menu-group-label">Group Ministries</li>
+                            <li><a href="golden-dads.html">Golden Dads</a></li>
+                            <li><a href="golden-moms.html">Golden Moms</a></li>
+                            <li><a href="young-dads.html">Young Dads</a></li>
+                            <li><a href="young-moms.html">Young Moms</a></li>
+                            <li><a href="couples.html">Couples</a></li>
+                            <li><a href="youth-single.html">Youth / Single</a></li>
+                            <li class="menu-group-label">Outreach Ministries</li>
+                            <li><a href="soul-winning.html">Soul Winning</a></li>
+                            <li><a href="door-knocking.html">Door Knocking</a></li>
+                            <li><a href="outreaches.html">Outreaches</a></li>
+                            <li><a href="tracts-giving.html">Tracts Giving</a></li>
+                            <li><a href="bible-study.html">Bible Study</a></li>
+                            <li><a href="funeral-services.html">Funeral Services</a></li>
+                            <li><a href="feeding-ministry.html">Feeding Ministry</a></li>
+                            <li><a href="fetching-kids.html">Fetching Kids</a></li>
+                            <li class="menu-group-label">Music, Training & Camps</li>
+                            <li><a href="choir.html">Choir</a></li>
+                            <li><a href="music-ministry.html">Music Ministry</a></li>
+                            <li><a href="teachers-training.html">Teacher's Training</a></li>
+                            <li><a href="sports-ministry.html">Sports Ministry</a></li>
+                            <li><a href="childrens-camp.html">Children's Camp</a></li>
+                            <li><a href="family-camp.html">Family Camp</a></li>
+                            <li><a href="youth-camp.html">Youth Camp</a></li>
+                            <li><a href="bible-institute.html">Faith Bible Institute</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Media <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="watch.html">Watch</a></li>
+                            <li><a href="learn-signs.html">Learn Sign Language</a></li>
+                            <li><a href="https://www.facebook.com/" target="_blank">Connect on Facebook</a></li>
+                            <li><a href="media-library.html">Harvest Media Library</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="directions.html">Directions</a></li>
+                    <li><a href="give.html">Give</a></li>
+                </ul>
+
+                <div class="nav-cta-buttons">
+                    <a href="visit.html" class="btn btn-nav-outline">Plan Your Visit</a>
+                    <a href="heaven.html" class="btn btn-nav-filled">Heaven</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-overlay"></div>
+        <div class="container">
+            <h1>How to Use</h1>
+            <p>Simple directions for the visitation tools, media library, and giving page</p>
+        </div>
+    </section>
+
+    <section class="help-overview">
+        <div class="container">
+            <div class="help-intro">
+                <h2>Use the site with confidence</h2>
+                <p>This page is for church workers and users who need quick directions. Choose the area you need, then follow the steps below. Each section explains what the page is for, which button to use, and what to expect next.</p>
+            </div>
+
+            <div class="jump-links">
+                <a class="jump-card" href="#visitation-help">
+                    <i class="fas fa-house-user"></i>
+                    <h3>Visitation</h3>
+                    <p>Use visitation updates, reports, new mover visits, and printable card tools.</p>
+                </a>
+                <a class="jump-card" href="#media-help">
+                    <i class="fas fa-photo-film"></i>
+                    <h3>Photo Repository</h3>
+                    <p>Sign in, create folders, upload files, move items, and download media.</p>
+                </a>
+                <a class="jump-card" href="#giving-help">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Giving Page</h3>
+                    <p>Give by GCash, PayPal, mail, drop-off, or by scanning the giving QR code.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="visitation-help" class="help-section">
+        <div class="container">
+            <div class="help-block">
+                <div class="help-heading">
+                    <i class="fas fa-house-user"></i>
+                    <div>
+                        <h2>How to Use the Visitation Page</h2>
+                        <p>The visitation page is the starting place for follow-up work and visitation records.</p>
+                    </div>
+                </div>
+
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Open the page</h3>
+                        <p>Go to the Visitation page and choose the task you need. The page includes new mover visits, visitation updates, reports, and card creation tools.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Choose the correct tool</h3>
+                        <p>Use <strong>Visit New Move Ins</strong> to see new mover information, <strong>Visitation Card Update</strong> to submit a report, <strong>Visitation Report</strong> to review saved cards, and <strong>Visitation Card Creation</strong> to make printable cards from a spreadsheet.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Submit accurate details</h3>
+                        <p>Enter names, addresses, contact information, and notes carefully. This helps the church keep reliable follow-up records for future visits.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Review before finishing</h3>
+                        <p>Before saving or generating a file, check spellings, dates, and house information. Correct entries make reports and printable cards more useful.</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h3>Helpful reminders</h3>
+                    <ul class="tip-list">
+                        <li>Use the card update page when you already have visitation details and need to record them online.</li>
+                        <li>Use the report page when you want to search or review saved visitation entries.</li>
+                        <li>Use the card creation page when you have an Excel or CSV list and want printable PDF cards.</li>
+                    </ul>
+                </div>
+
+                <div class="action-row">
+                    <a href="visitation.html" class="btn btn-primary">Open Visitation</a>
+                    <a href="visitation-card.html" class="btn btn-secondary">Open Card Update</a>
+                    <a href="visitation-report.html" class="btn btn-secondary">Open Report</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="media-help" class="help-section">
+        <div class="container">
+            <div class="help-block">
+                <div class="help-heading">
+                    <i class="fas fa-photo-film"></i>
+                    <div>
+                        <h2>How to Use the Photo Repository</h2>
+                        <p>The Harvest Media Library stores photos, videos, documents, and ministry media files.</p>
+                    </div>
+                </div>
+
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Sign in first</h3>
+                        <p>Enter your email and password on the Media Library login form. After sign-in, the library will open and show your folders and files.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Go to the right folder</h3>
+                        <p>Use the folder list on the left side to open the correct category. The breadcrumb at the top helps you know where you are.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Upload or organize media</h3>
+                        <p>Click <strong>Upload Files</strong> or drag files into the upload area. You can also create folders, move files to another folder, or delete items you no longer need.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Open file details when needed</h3>
+                        <p>Click a file to view details, download it, or move it to another folder. This is the easiest way to organize the library after uploading.</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h3>Best practices</h3>
+                    <ul class="tip-list">
+                        <li>Name folders clearly so other workers can find files quickly.</li>
+                        <li>Upload files into the correct ministry or event folder before sharing them.</li>
+                        <li>Double-check before deleting a folder because removing a folder also removes its contents.</li>
+                    </ul>
+                </div>
+
+                <div class="action-row">
+                    <a href="media-library.html" class="btn btn-primary">Open Media Library</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="giving-help" class="help-section">
+        <div class="container">
+            <div class="help-block">
+                <div class="help-heading">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <div>
+                        <h2>How to Use the Giving Page</h2>
+                        <p>The giving page shows the available ways to support the ministry online or in person.</p>
+                    </div>
+                </div>
+
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Choose your giving method</h3>
+                        <p>The page offers GCash, PayPal, mail-in giving, and drop-off giving. Pick the option that works best for you.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Use GCash or PayPal online</h3>
+                        <p>For GCash, scan the QR code shown on the page. For PayPal, click the PayPal button and complete the gift on the secure PayPal page.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Use mail or drop-off if preferred</h3>
+                        <p>The page also lists the church mailing address and office hours, so you can send or deliver your offering in person.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Ask for help if needed</h3>
+                        <p>If you have questions about giving statements or records, use the contact information at the bottom of the page.</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h3>Quick links on the giving page</h3>
+                    <ul class="link-list">
+                        <li>The GCash card includes a scannable QR code.</li>
+                        <li>The PayPal card opens a secure donation form in a new tab.</li>
+                        <li>The giving QR code section helps users open the giving page from a mobile device.</li>
+                    </ul>
+                </div>
+
+                <div class="action-row">
+                    <a href="give.html" class="btn btn-primary">Open Giving Page</a>
+                </div>
+            </div>
+
+            <div class="support-note">
+                <h2>Need more help?</h2>
+                <p>If you are unsure which page to use, start with the main Visitation, Media Library, or Give page and compare the button names with the directions above. If the information you need is not listed, contact the church office for assistance.</p>
+                <a href="contact.html" class="btn btn-white">Contact the Church</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Harvest Baptist Church Antipolo</h3>
+                    <p>Antipolo, Philippines</p>
+                    <p class="footer-tagline">A place you can call home.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class=""footer-section"">
+                    <h4>Service Times</h4>
+                    <p>Sunday School: 8:00 AM - 8:45 AM</p>
+                    <p>Sunday Worship Service: 9:00 AM - 11:00 AM</p>
+                    <p>Age Group Sessions: 11:00 AM - 11:45 AM</p>
+                    <p>Sunday Gospel Hour: 2:00 PM - 4:00 PM</p>
+                    <p>Monday Bible School: 5:30 PM - 6:30 PM</p>
+                    <p>Friday Prayer Meeting: 5:30 PM - 6:30 PM</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="beliefs.html">What We Believe</a></li>
+                        <li><a href="ministries.html">Ministries</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Block 50 Lot 9, Phase 3-A, Brgy. San Isidro, Zontaville, Padilla, Antipolo, Philippines, 187</p>
+                    <p><i class="fas fa-phone"></i> 09665744044</p>
+                    <p><i class="fas fa-envelope"></i> Harvest.baptist@yahoo.com</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Harvest Baptist Church Antipolo of Antipolo, Philippines. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/pwa-install.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js?v=20260421help')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registered: ', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
